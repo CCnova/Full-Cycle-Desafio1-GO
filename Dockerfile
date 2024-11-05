@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN apk add --no-cache upx \
-  && go build main.go \
+  && go build -ldflags "-s -w" main.go \
   && upx --best --ultra-brute main
 
 FROM scratch
